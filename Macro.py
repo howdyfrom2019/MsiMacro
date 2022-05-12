@@ -16,9 +16,9 @@ driver.get(
 time.sleep(1)
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='leftLoginBox']/iframe[@title='login']"))
 userId = driver.find_element(By.ID, 'userId')
-userId.send_keys('snrkTj')
+userId.send_keys('ID')
 userPwd = driver.find_element(By.ID, 'userPwd')
-userPwd.send_keys('tjdwn!0113')
+userPwd.send_keys('PWD')
 userPwd.send_keys(Keys.ENTER)
 
 # driver.get('https://tickets.interpark.com/goods/22005090')
