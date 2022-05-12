@@ -16,11 +16,12 @@ driver.get(
 time.sleep(1)
 driver.switch_to.frame(driver.find_element(By.XPATH, "//div[@class='leftLoginBox']/iframe[@title='login']"))
 userId = driver.find_element(By.ID, 'userId')
-userId.send_keys('ID')
+userId.send_keys('snrkTj')
 userPwd = driver.find_element(By.ID, 'userPwd')
-userPwd.send_keys('PWD')
+userPwd.send_keys('tjdwn!0113')
 userPwd.send_keys(Keys.ENTER)
 
+# driver.get('https://tickets.interpark.com/goods/22005090')
 driver.get('https://tickets.interpark.com/goods/22005185')
 
 # driver.find_element(By.XPATH, "//div[@class='popupWrap']/div[@class='popupFooter']/button").click()
@@ -29,14 +30,15 @@ driver_time.get("https://time.navyism.com/?host=ticket.interpark.com")
 driver_time.find_element(By.ID, 'msec_title').click()
 
 while True:
-    a = driver_time.find_element(By.ID, 'time_area').text
-    b = driver_time.find_element(By.ID, 'msec_area').text
+    a = driver_time.find_element(By.XPATH, "//*[@id='time_area']").text
+    b = driver_time.find_element(By.XPATH, "//*[@id='msec_area']").text
 
-    time = re.findall("[0-9]+", str(a))
-    if time[4] == '59' and time[5] == '59':
-        msec = re.findall("[0-9]+", str(b))
+    timer = re.findall("[0-9]+", a)
+    # if timer[4] == '59' and timer[5] == '59':
+    if timer[5] == '59':
+        msec = re.findall("[0-9]+", b)
         if int(msec[0]) >= 800:
-            print('finally here')
+            # driver.get('https://tickets.interpark.com/goods/22005090')
             driver.get('https://tickets.interpark.com/goods/22005185')
             driver.find_elements(By.XPATH, "//ul[@data-view='days']/li")[15].click()
             driver.find_element(By.XPATH, "//div[@class='sideBtnWrap']/a[@class='sideBtn is-primary']").click()
